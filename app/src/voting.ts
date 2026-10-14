@@ -9,7 +9,7 @@ import {
   type WalletClient,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import artifact from "../../artifacts/contracts/Voting.sol/Voting.json";
+import votingAbiJson from "./voting-abi.json";
 import {
   chainFor,
   contractAddressFor,
@@ -17,7 +17,7 @@ import {
   type NetworkId,
 } from "./chains";
 
-export const votingAbi = artifact.abi;
+export const votingAbi = votingAbiJson;
 
 export type PollView = {
   id: bigint;
