@@ -55,11 +55,14 @@ export function rpcFor(network: NetworkId): string {
   return import.meta.env.VITE_MONAD_RPC_URL || monadTestnet.rpcUrls.default.http[0];
 }
 
+const DEFAULT_MONAD_VOTING_ADDRESS =
+  "0x3BB2262d9174C70b9a04e2bF199aa159E9953a7E";
+
 export function contractAddressFor(network: NetworkId): `0x${string}` | "" {
   const raw =
     network === "local"
       ? import.meta.env.VITE_LOCAL_VOTING_ADDRESS
-      : import.meta.env.VITE_MONAD_VOTING_ADDRESS;
+      : import.meta.env.VITE_MONAD_VOTING_ADDRESS || DEFAULT_MONAD_VOTING_ADDRESS;
   if (raw && /^0x[a-fA-F0-9]{40}$/.test(raw)) return raw as `0x${string}`;
   return "";
 }

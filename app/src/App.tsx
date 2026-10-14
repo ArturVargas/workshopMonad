@@ -24,7 +24,9 @@ const DURATIONS = [
 ];
 
 export function App() {
-  const [network, setNetwork] = useState<NetworkId>("local");
+  const [network, setNetwork] = useState<NetworkId>(() =>
+    getVotingAddress("local") ? "local" : "monad",
+  );
   const [accountIndex, setAccountIndex] = useState(0);
   const [walletAddress, setWalletAddress] = useState<Address | null>(null);
   const [walletClient, setWalletClient] = useState<WalletClient | null>(null);
@@ -293,11 +295,24 @@ export function App() {
               ))}
             </select>
           </label>
-          <button type="submit" disabled={busy || !contractAddress || !signer}>
-            Publicar encuesta
+          <button
+            type={network === "monad" && !signer ? "button" : "submit"}
+            disabled={busy || !contractAddress}
+            onClick={
+              network === "monad" && !signer ? () => void onConnect() : undefined
+            }
+          >
+            {network === "monad" && !signer
+              ? "Conectar billetera"
+              : "Publicar encuesta"}
           </button>
           {network === "local" && signer && (
             <p className="hint">Firmando como {shortAddress(signer.account.address)}</p>
+          )}
+          {network === "monad" && !signer && (
+            <p className="hint">
+              En Monad testnet la encuesta se publica con tu billetera.
+            </p>
           )}
         </form>
 
