@@ -1,0 +1,20 @@
+{
+  "name": "urna",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "node": "hardhat node",
+    "deploy:local": "hardhat ignition deploy ignition/modules/Voting.ts --network localhost && node scripts/sync-address.mjs"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^3.1.8",
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.7",
+    "@types/node": "^22.20.1",
+    "hardhat": "^3.14.0",
+    "typescript": "~5.9.3",
+    "viem": "^2.47.6"
+  }
+}

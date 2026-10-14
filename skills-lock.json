@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "hardhat-toolbox-viem": {
+      "source": "nomicfoundation/hardhat-skills",
+      "sourceType": "github",
+      "skillPath": "skills/hardhat-toolbox-viem/SKILL.md",
+      "computedHash": "55a5d37c89e5694e75712d3b54c1667f192ecd053aadec67b485453207f533be"
+    }
+  }
+}
